@@ -1,4 +1,4 @@
-//import 'express-async-error';
+import 'express-async-error';
 import express from 'express';
 import middleware from './middlewares/index.middleware.js';
 const app = express();
