@@ -1,15 +1,17 @@
 import User from '../model/user.model.js';
+import bcrypt from 'bcrypt';
 
 class UserController{
 
     async createUser(req, res) {
-        console.log('jeyyy');
-        const create  = User.create({name:req.body.name,password:req.body.password, email:req.body.email}).then(val=>{
+      
+        const create  = User.create({name:req.body.name,password:bcrypt.hashSync(req.body.password,10), email:req.body.email}).then(val=>{
             return res.status(201).send({ status: true, message: 'user created successfully' });
         }).catch(err=>{
            return  res.status(500).send({status:false, message:`${err}`})
         })
     }
+   
 }
 
 export default new UserController();
