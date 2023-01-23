@@ -13,7 +13,10 @@ class UserController{
     }
 
     async loginUser(req, res) {
-        const login = User.findOne({where:{email:req.body.email}}).then(val=>{
+        const login = User.findOne({ where: { email: req.body.email } }).then(val => {
+            if(val===null){
+                return res.status(200).send({ status: false, message: 'user does not exist' });
+            }
             const verify = bcrypt.compareSync(req.body.password, val.password);
             if(!verify){
                 return res.status(403).send({ status: false, message: 'invalid email or password' });
