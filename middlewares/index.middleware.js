@@ -11,10 +11,11 @@ const middleware = (app) => {
     }).catch(err=>{
         console.log(`${err}`)
     })
+    
     app.use(indexRouter);
-    app.use('*',()=>{
-        return res.status(500).send({status:false,messge:'app is up and running, check the docs'})
-    })
+    // app.use('*',(req,res)=>{
+    //     return res.status(500).send({status:false,messge:'app is up and running, check the docs'})
+    // })
 }
 
 
