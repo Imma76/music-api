@@ -1,6 +1,6 @@
 import {Sequelize} from 'sequelize';
 
-const sequelize =new  Sequelize('Music-api','postgres','advent',{'dialect':'sql'});
+const sequelize =new  Sequelize('Music-api','postgres','advent',{'dialect':'postgres'});
 
 
 
