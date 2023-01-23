@@ -1,6 +1,6 @@
 import User from '../model/user.model.js';
 import bcrypt from 'bcrypt';
-
+import _ from 'lodash';
 class UserController{
 
     async createUser(req, res) {
@@ -21,7 +21,9 @@ class UserController{
             if(!verify){
                 return res.status(403).send({ status: false, message: 'invalid email or password' });
             }
-            return res.status(200).send({ status: true ,message:val});
+            console.log(val)
+            const user = _.omit(val.dataValues,"password");
+            return res.status(200).send({ status: true ,message:user});
         }).catch(err => {
             return res.status(500).send({ status: false, messsage: `${err}` });
         })
