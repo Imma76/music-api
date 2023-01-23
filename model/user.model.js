@@ -17,3 +17,5 @@ const User = sequelize.define('User',{
         type:Sequelize.STRING
     }
 })
+
+export default User;
