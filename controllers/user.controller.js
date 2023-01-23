@@ -11,6 +11,18 @@ class UserController{
            return  res.status(500).send({status:false, message:`${err}`})
         })
     }
+
+    async loginUser(req, res) {
+        const login = User.findOne({where:{email:req.body.email}}).then(val=>{
+            const verify = bcrypt.compareSync(req.body.password, val.password);
+            if(!verify){
+                return res.status(403).send({ status: false, message: 'invalid email or password' });
+            }
+            return res.status(200).send({ status: true ,message:val});
+        }).catch(err => {
+            return res.status(500).send({ status: false, messsage: `${err}` });
+        })
+    }
    
 }
 
