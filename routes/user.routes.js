@@ -4,8 +4,6 @@ const userRouter = express.Router();
 
 
 userRouter.post('/', userController.createUser);
-userRouter.post('/login', (req, res)=>{
-    console.log('kk')
-})
+userRouter.post('/login', userController.loginUser);
 
 export default userRouter;
