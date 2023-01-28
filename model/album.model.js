@@ -13,15 +13,18 @@ const Album = sequelize.define('Album', {
         
         //DataTypes.ARRAY(DataTypes.STRING)
     },
-    author: {
+    authorName: {
         type: Sequelize.STRING,
         allowNull:false,
     },
     title:{
 
         type:Sequelize
-    }
-
+    },
+    authorId: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+    },
 });
 
 export default Album;
