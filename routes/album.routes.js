@@ -5,6 +5,6 @@ const albumRouter = express.Router();
 
 
 albumRouter.post('/',albumController.createAlbum);
-
+albumRouter.put('/update',albumController.updateAlbumSongs);
 
 export default albumRouter;
