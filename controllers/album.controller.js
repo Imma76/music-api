@@ -37,6 +37,21 @@ class AlbumController{
         })
         
     }
+    async deleteAlbum(req, res) {
+        const findAlbum = Album.findOne({ where: { id: req.params.albumId } }).then(val => {
+            if (val === null) {
+                return res.status(404).send({ status: false, message: 'album does not exist or album has been deleted already' });
+               
+            }
+            val.destroy().then((val) => {
+                return res.status(200).send({ status: false, message: 'album has been deleted' });
+            }).catch(err => {
+                return res.status(404).send({ status: false, message:'unable  to delete album' });
+            })
+        }).catch(err => { 
+            res.status(500).send({ status: false, message: `${err}` });
+        })
+    }
     
 }
 
