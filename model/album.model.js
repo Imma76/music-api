@@ -1,5 +1,5 @@
 import sequelize from '../config/db.config.js';
-import { Sequelize } from 'sequelize';
+import  Sequelize  from 'sequelize';
 
 
 const Album = sequelize.define('Album', {
@@ -10,7 +10,9 @@ const Album = sequelize.define('Album', {
         primaryKey:true
     },
     songLinks: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING),
+
+        defaultValue:[],
         
         
         //DataTypes.ARRAY(DataTypes.STRING)
