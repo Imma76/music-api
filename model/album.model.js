@@ -25,7 +25,7 @@ const Album = sequelize.define('Album', {
 
         type:Sequelize.STRING
     },
-    authorId: {
+    artistId: {
         type: Sequelize.INTEGER,
         allowNull:false,
     },
