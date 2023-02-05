@@ -19,7 +19,7 @@ class SongController{
             ({ where: { id: req.body.songId } }).then(val => {
 
                 val.songLink = req.body.songLink;
-                Song.update({ songLink: val.songLink, }, { id: req.body.songId }).then(val => {
+                Song.update({ songLink: val.songLink, }, { where: { id: req.body.songId } }).then(val => {
                      res.status(200).send({status:true,message:'song updated successfully'})
                 }).catch(err => {
                      res.status(500).send({status:false,message:`${err}`})
